@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persona;
-use App\MOdels\Interes;
+use App\Models\Interes;
 use Illuminate\Http\Request;
 
 class PersonaController extends Controller
@@ -31,14 +31,14 @@ class PersonaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'email' => 'required|email|unique:personas',
+            'nombre'    => 'required|string|max:255',
+            'email'     => 'required|email|unique:personas',
             'intereses' => 'array',
         ]);
 
         $persona = Persona::create($request->only('nombre', 'email'));
 
-        if ($request->has('intereses')){
+        if ($request->has('intereses')) {
             $persona->intereses()->attach($request->intereses);
         }
 
@@ -59,7 +59,7 @@ class PersonaController extends Controller
      */
     public function edit(Persona $persona)
     {
-        // pruebaaaaaaa
+        //
     }
 
     /**
